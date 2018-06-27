@@ -12,7 +12,7 @@
 
   </head>
   <body>
-      <table class="table table-hover" border='1'>
+      <table class="table-bordered table-hover" border='1'>
         <tr>
           <th class="table-primary text-center">글번호</td>
             <td><%= rows[0]._idx %></td></tr>           
@@ -50,10 +50,10 @@
             <form method="post" action="/read">
               <input type="hidden" id="idx" name="idx" value="<%= rows[0]._idx %>">
               <input type="submit" class="btn btn-outline-success" value="추천하기">
-            </form>   
+              
             <!--사이트 주소에 글 번호 데이터(_idx)를 포함해서 전달하는 get 방식 예시-->
               <input type="button" class="btn btn-outline-success" value="수정하기" onclick="window.location.href='http://localhost:3000/update/<%= rows[0]._idx %>'">
-          </div>
+          </div></form> 
         </td>  
 </tr>
         </td>

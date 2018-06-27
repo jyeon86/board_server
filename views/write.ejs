@@ -2,6 +2,12 @@
 <html>
   <head>
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/stylesheets/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script>
         function onWriteSubmit(){
@@ -40,27 +46,30 @@
   <body>
     <h1>글쓰기</h1>
     <form method="post" action="/write" onsubmit="return onWriteSubmit()">
-        <table class="table table-hover" border="1" width="100%">
+        <table class="table table-bordered table-hover" border="1" width="100%">
             <tr>
-                <td>제목</td>
-                <td><input type="text" name="titleInput" id="titleInput" placeholder="제목을 입력해주세요."></td>
+                <td class="table-primary text-center" style="font-size: 17px;">제목</td>
+                <td><input class="form-control" type="text" name="titleInput" id="titleInput" placeholder="제목을 입력해주세요."></td>
             </tr>
             <tr>
-                <td>이름</td>
-                <td><input type="text" name="nameInput" id="nameInput" placeholder="이름을 입력해주세요."></td>
+                <td class="table-primary text-center" style="font-size: 17px;">이름</td>
+                <td><input type="text" class="form-control" name="nameInput" id="nameInput" placeholder="이름을 입력해주세요."></td>
             </tr>
             <tr>
-                <td>카테고리</td>
-                <td><select type="text" name="categoryInput" id="categoryInput">
-                    <option value="일반" selected="selected">일반</option>
-                    <option value="회원">회원</option>
-                </select></td>
+                <td class="table-primary text-center" style="font-size: 17px;">카테고리</td>
+                <td>
+                    <select type="text" class="btn btn-outline-primary" name="categoryInput" id="categoryInput">
+                        <option value="일반" selected="selected">일반</option>
+                        <option value="회원" >회원</option>
+                     </select>
+            </td>
             </tr>
             <tr>
-                <td>내용</td>
-                <td><textarea name="contentsInput" id="contentsInput" cols="40" rows="5" placeholder="내용을 입력해주세요."></textarea></td>
+                <td class="table-primary text-center" style="font-size: 19px;">내용</td>
+                <td><textarea class="form-control" name="contentsInput" id="contentsInput" cols="40" rows="5" placeholder="내용을 입력해주세요."></textarea></td>
             </tr>
-         </table>           
+         </table>      
+            <div class="btn-group">    
                 <div class="form-check-inline">
                     <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" value="">공지사항
@@ -71,8 +80,9 @@
                         <input type="checkbox" class="form-check-input" value="">일반글
                     </label>
                     </div>
+            </div> 
 
-                <input type="submit" class="btn btn-outline-success" value="글 등록하기">
+                <input type="submit" style="float:right;" class="btn btn-outline-primary" value="글 등록하기">
 
     </form>
   </body>

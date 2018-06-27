@@ -2,6 +2,12 @@
 <html>
   <head>
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/stylesheets/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script>
         function onWriteSubmit(){
@@ -38,34 +44,49 @@
     </script>
   </head>
   <body>
-    <h1>글쓰기</h1>
+    <h1>글 수정하기</h1>
     <form method="post" action="./" onsubmit="return onWriteSubmit()">
-        <table border="1" width="100%">
+        <table class="table table-bordered table-hover" border="1" width="100%">
             <tr>
-                <td>제목</td>
-                <td><input type="text" name="titleInput" id="titleInput" placeholder="제목을 입력해주세요." value="<%= rows[0].title %>">></td>
+                <td class="table-success text-center" style="font-size: 17px;">제목</td>
+                <td><input class="form-control" type="text" name="titleInput" id="titleInput" placeholder="제목을 입력해주세요." value="<%= rows[0].title %>"></td>
             </tr>
             <tr>
-                <td>이름</td>
-                <td><input type="text" name="nameInput" id="nameInput" placeholder="이름을 입력해주세요." value="<%= rows[0].name %>">></td>
+                <td class="table-success text-center" style="font-size: 17px;">이름</td>
+                <td><input class="form-control" type="text" name="nameInput" id="nameInput" placeholder="이름을 입력해주세요." value="<%= rows[0].name %>"></td>
             </tr>
             <tr>
-                <td>카테고리</td>
-                <td><select type="text" name="categoryInput" id="categoryInput">
+                <td class="table-success text-center" style="font-size: 17px;">카테고리</td>
+                <td>                    
+                    <select type="text" class="btn btn-outline-success" name="categoryInput" id="categoryInput">
                     <option value="일반" selected="selected">일반</option>
-                    <option value="회원">회원</option>
-                </select></td>
+                    <option value="회원" >회원</option>
+                 </select>
+                </td>
             </tr>
             <tr>
-                <td>내용</td>
-                <td><textarea name="contentsInput" id="contentsInput" cols="40" rows="5" placeholder="내용을 입력해주세요." value="<%= rows[0].contents %>"></textarea></td>
-            </tr>
-            <tr>
-                <input type="hidden" id="idx" name="idx" value="<%= rows[0]._idx %>">
-
-                <td colspan="2"><input class="btn btn-outline-success type="submit" value="글 수정하기"></td>
+                <td class="table-success text-center" style="font-size: 17px;">내용</td>
+                <td><textarea  class="form-control" name="contentsInput" id="contentsInput" cols="40" rows="5" placeholder="<%= rows[0].contents %>"></textarea></td>
             </tr>
         </table>
+
+        <input type="hidden" id="idx" name="idx" value="<%= rows[0]._idx %>">
+        <div class="btn-group">    
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">공지사항
+                </label>
+                </div>
+                <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">일반글
+                </label>
+                </div>
+        </div>     
+        
+        <input type="hidden" id="idx" name="idx" value="<%= rows[0]._idx %>">
+        <input style="float:right;" class="btn btn-outline-success" type="submit" value="수정 등록">
+
     </form>
   </body>
 </html>

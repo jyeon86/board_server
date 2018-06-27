@@ -38,7 +38,41 @@ router.get('/:idx', function(req, res, next) {
           
       });
   });
-
 });
 
+/*수정하기 업로드부분인듯한데 노이해 
+
+router.post('/',function(req,res,next){
+    var idx = req.body.idx;
+    var title = req.body.titleInput;
+    var name = req.body.nameInput;
+    var contents = req.body.contentsInput;
+    var category = req.body.categoryInput;
+
+    pool.getConnection(function(err,connection){
+        if(err) {
+            console.log("getConnection Error");
+            throw err;
+        }
+        var sql = 'UPDATE my_board SET title = "' + title 
+        + '", name = "' + name
+        + '", contents = "' + contents
+        + '", category = "' + category
+        + '", update_at = now()'
+        + ' WHERE _idx = ' + idx;
+
+        console.log(sql);
+        var query = connection.query(sql.function(err, rows) {
+            if(err) {
+                console.log("query Error");
+                connection.release();
+                throw err;
+            }
+            res.redirect('/');
+            connection.release();
+        })
+    });
+})
+
+*/
 module.exports = router;

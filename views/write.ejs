@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+        function onWriteSubmit(){
+            //validation 추가
+            //제목은 100글자 미만
+            //이름의 글자수가 20 이상x
+            //내용의 글자수가 1000자 이상이 되지 않는다.
+            //제목,이름을 꼭입력해야한다
+            var title = document.getElementById('titleInput').value;
+            var name = document.getElementById('nameInput').value;
+            var contents = document.getElementById('contentsInput').value;
+
+            if(title == ""){
+            alert("제목을 입력하세요");
+            return false;   
+            }
+            if(name.length > 20){
+            alert("이름은 20글자 이상 입력할수 없습니다.");
+            return false;   
+            }         
+            if(name == ""){
+            alert("이름을 입력하세요");
+            return false;   
+            }
+            if(contents.length > 1000){
+            alert("내용은 1000글자 이상 입력할 수 없습니다.");
+            return false;   
+            }
+            if(contents == ""){
+            alert("내용을 입력하세요");
+            return false;
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <h1>글쓰기</h1>
+    <form method="post" action="/write" onsubmit="return onWriteSubmit()">
+        <table class="table table-hover" border="1" width="100%">
+            <tr>
+                <td>제목</td>
+                <td><input type="text" name="titleInput" id="titleInput" placeholder="제목을 입력해주세요."></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="nameInput" id="nameInput" placeholder="이름을 입력해주세요."></td>
+            </tr>
+            <tr>
+                <td>카테고리</td>
+                <td><select type="text" name="categoryInput" id="categoryInput">
+                    <option value="일반" selected="selected">일반</option>
+                    <option value="회원">회원</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea name="contentsInput" id="contentsInput" cols="40" rows="5" placeholder="내용을 입력해주세요."></textarea></td>
+            </tr>
+         </table>           
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="">공지사항
+                    </label>
+                    </div>
+                    <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="">일반글
+                    </label>
+                    </div>
+
+                <input type="submit" class="btn btn-outline-success" value="글 등록하기">
+
+    </form>
+  </body>
+</html>

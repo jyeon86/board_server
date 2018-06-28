@@ -40,10 +40,9 @@ router.get('/:idx', function(req, res, next) {
   });
 });
 
-/*수정하기 업로드부분인듯한데 노이해 
-
 router.post('/',function(req,res,next){
-    var idx = req.body.idx;
+    var idx = req.body.indexInput;
+    console.dir(req.body);
     var title = req.body.titleInput;
     var name = req.body.nameInput;
     var contents = req.body.contentsInput;
@@ -59,20 +58,20 @@ router.post('/',function(req,res,next){
         + '", contents = "' + contents
         + '", category = "' + category
         + '", update_at = now()'
-        + ' WHERE _idx = ' + idx;
-
+        + ' WHERE _idx =' + idx;
+        console.log(idx);
         console.log(sql);
-        var query = connection.query(sql.function(err, rows) {
+        var query = connection.query(sql, function(err, rows) {
             if(err) {
                 console.log("query Error");
                 connection.release();
                 throw err;
             }
-            res.redirect('/');
+            res.redirect('http://localhost:3000/');
             connection.release();
-        })
+        });
     });
 })
 
-*/
+
 module.exports = router;

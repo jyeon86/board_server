@@ -45,7 +45,7 @@
   </head>
   <body>
     <h1>글 수정하기</h1>
-    <form method="post" action="./" onsubmit="return onWriteSubmit()">
+    <form method="post" action="/update" onsubmit="return onWriteSubmit()">
         <table class="table table-bordered table-hover" border="1" width="100%">
             <tr>
                 <td class="table-success text-center" style="font-size: 17px;">제목</td>
@@ -78,13 +78,13 @@
                 </label>
                 </div>
                 <div class="form-check-inline">
-                <label class="form-check-label">
+                <label class="form-check-label"> 
                     <input type="checkbox" class="form-check-input" value="">일반글
                 </label>
                 </div>
         </div>     
         
-        <input type="hidden" id="idx" name="idx" value="<%= rows[0]._idx %>">
+        <input type="hidden" id="indexInput" name="indexInput" value="<%= rows[0]._idx %>">
         <input style="float:right;" class="btn btn-outline-success" type="submit" value="수정 등록">
 
     </form>

@@ -46,6 +46,16 @@
           %>
 
       </table>
-      <input type="button" value="글쓰기" class="btn btn-primary" onclick="window.location.href='http://localhost:3000/write'">
-  </body>
+  <form method="post" action="/search" class="form-inline">
+    <select type="text" id="searchTypeInput" name="searchTypeInput" class="btn btn-outline-primary" name="categoryInput" id="categoryInput">
+          <option value="title" selected="selected">제목</option>
+          <option value="name" >작성자</option>
+          <option value="_idx" >글번호</option>
+        </select>
+    <input type="text"  id="keywordInput" name="keywordInput" class="form-control col-4" placeholder="검색내용을 입력하세요"> 
+    <input type="submit" class="btn btn-outline-primary" value="검색하기">
+    <input type="button" value="목록으로" class="btn btn-outline-primary" style="" onclick="window.location.href='http://localhost:3000/'">
+  </form>
+  <input type="button" value="글쓰기" class="btn btn-primary" style="" onclick="window.location.href='http://localhost:3000/write'">
+</body>
 </html>

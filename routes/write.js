@@ -38,6 +38,7 @@ router.post('/', function(req, res, next) {
       console.log("getConnection Error");
       throw err;
     }
+    
     var sql = "INSERT INTO my_board (title, name, category,"+
     " contents, update_at, create_at) VALUES "+"('"+title+"', '"+
     name+"', '"+category+"', '"+contents+"',"+

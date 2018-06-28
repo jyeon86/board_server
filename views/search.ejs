@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="../public/stylesheets/index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <h3>INDEX PAGE</h3>
+      <table class="table-bordered table-hover" border='1'>
+        <tr>
+          <th class="table-primary text-center">글번호</td>
+          <th class="table-primary text-center">제목</td>
+          <th class="table-primary text-center">이름</td>
+          <th class="table-primary text-center">조회수</td>
+          <th class="table-primary text-center">추천수</td>
+          <th class="table-primary text-center">카테고리</td>
+          <th class="table-primary text-center">내용</td>
+          <th class="table-primary text-center">업데이트 시간</td>
+          <th class="table-primary text-center">글쓴시간</td>
+        </tr>
+          
+          <%
+            for(var i = 0; i < rows.length; i++) {
+          %>
+          <tr class="">
+              <td class="text-center"><%= rows[i]._idx %></td>
+              <td style=""><a href="./read/<%= rows[i]._idx %>"><%= rows[i].title %></a></td>
+              <td><%= rows[i].name %></td>
+              <td><%= rows[i].hit_count %></td>
+              <td><%= rows[i].best_count %></td>
+              <td><%= rows[i].category %></td>
+              <td><%= rows[i].contents %></td>
+              <td style="font-size: 8px;"><%= rows[i].update_at %></td>
+              <td style="font-size: 8px;"><%= rows[i].create_at %></td>
+          </tr>
+          
+          <%
+          }
+          %>
+
+      </table>
+      <select type="text" class="btn btn-outline-primary" name="categoryInput" id="categoryInput">
+        <option value="일반" selected="selected">일반</option>
+        <option value="회원" >회원</option>
+     </select>
+     <input type="text" placeholder="검색내용을 입력하세요"> <input type="submit" value="검색하기">
+      <input type="button" value="글쓰기" class="btn btn-primary" onclick="window.location.href='http://localhost:3000/write'">
+  </body>
+</html>

@@ -30,6 +30,8 @@ router.post('/', function(req, res, next) {
   var name = req.body.nameInput;
   var contents = req.body.contentsInput;
   var category = req.body.categoryInput;
+  var noti = req.body.noti;
+
   console.log(title, contents, category);
   //데이터서비스와 서버가 연결되기 시작
   pool.getConnection(function(err, connection) {
@@ -38,12 +40,16 @@ router.post('/', function(req, res, next) {
       console.log("getConnection Error");
       throw err;
     }
-    
-    var sql = "INSERT INTO my_board (title, name, category,"+
+    /** var sql = "INSERT INTO my_board (title, name, category,"+
     " contents, update_at, create_at) VALUES "+"('"+title+"', '"+
     name+"', '"+category+"', '"+contents+"',"+
     "now(), now())";
-
+ */
+  var sql = "INSERT INTO my_board (title, name, category,"+
+    " contents, update_at, create_at, noti) VALUES "+"('"+title+"', '"+
+    name+"', '"+category+"', '"+contents+"',"+
+    "now(), now(), '"+noti+"');";//공지글체크인식하도록 수정
+   console.log(sql);
     var query = connection.query(sql, function(err, rows) {
       if(err){
         console.log("query Error");

@@ -59,10 +59,21 @@
                 <td class="table-primary text-center" style="font-size: 17px;">카테고리</td>
                 <td>
                     <select type="text" class="btn btn-outline-primary" name="categoryInput" id="categoryInput">
-                        <option value="일반" selected="selected">일반</option>
+                        <option value="일반" selected="selected">비회원</option>
                         <option value="회원" >회원</option>
-                     </select>
-            </td>
+                    </select>
+                 <div class="form-check-inline" id="">
+                    <label class="form-check-label" for="noti_no">
+                        <input type="radio" value="0" class="form-check-input" name="noti" checked="checked" id="noti_no">일반글
+                    </label>
+                    </div>
+                <div class="form-check-inline" id="">
+                    <label class="form-check-label" for="noti_yes">
+                        <input type="radio" value="1" class="form-check-input" name="noti" id="noti_yes">공지글
+                    </label>
+                 </div>
+
+                </td>
             </tr>
             <tr>
                 <td class="table-primary text-center" style="font-size: 19px; height:100px;">내용</td>

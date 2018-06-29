@@ -3,3 +3,18 @@
 .time_length{
     width: 50px;
 }
+
+input[id="cb2"] + label {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #bcbcbc;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  input[id="cb2"]:checked + label {
+    background-color: blue;
+  }
+  input[id="cb2"] {
+    display: none;
+  }

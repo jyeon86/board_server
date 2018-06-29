@@ -13,11 +13,19 @@
   </head>
   <body>
       <h3>Public Board PAGE</h3>   
-      <div class="btn-group-sm">
-          <button type="button" value="전체" class="btn btn-primary" style="" onclick="window.location.href='http://localhost:3000/'">전체</button>
-          <button type="button" value="회원글" class="btn btn-primary" style="" onclick="window.location.href='http://localhost:3000/show_members'">회원글</button>
-          <button type="button" value="일반글" class="btn btn-outline-primary" style="" onclick="window.location.href='http://localhost:3000/public'">일반글</button>
-      </div>
+      <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3000/">전체글</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3000/show_members">회원글만 보기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="http://localhost:3000/public">일반글만 보기</a>
+          </li>
+          <li class="nav-item">
+        </ul>
+  
       <table class="table-bordered table-hover" border='1'>
         <tr>
           <th class="table-primary text-center">글번호</td>
@@ -25,7 +33,7 @@
           <th class="table-primary text-center">이름</td>
           <th class="table-primary text-center">조회수</td>
           <th class="table-primary text-center">추천수</td>
-          <th class="table-primary text-center">카테고리</td>type="button" 
+          <th class="table-primary text-center">카테고리</td> 
           <th class="table-primary text-center">내용</td>
           <th class="table-primary text-center">업데이트 시간</td>
           <th class="table-primary text-center">글쓴시간</td>

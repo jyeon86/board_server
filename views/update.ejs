@@ -62,6 +62,20 @@
                     <option value="일반" selected="selected">일반</option>
                     <option value="회원" >회원</option>
                  </select>
+                     &nbsp;
+                    <%
+                    if(rows[0].noti == 1) {
+                    %>
+                    <label for="noti_check" class="checkbox-inline"><input type="checkbox" value="1" checked="checked" name="noti_check">공지글</label>
+                
+                    <%
+                    } else {
+                    %>
+
+                    <label for="noti_check" class="checkbox-inline"><input type="checkbox" value="1" name="noti_check">공지글</label>
+                    <%
+                        }
+                    %>
                 </td>
             </tr>
             <tr>

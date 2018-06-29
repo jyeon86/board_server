@@ -30,8 +30,8 @@ app.use('/read', readRouter);
 app.use('/write', writeRouter);
 app.use('/update', updateRouter);
 app.use('/search', searchRouter);
-app.use('/', show_membersRouter);
-app.use('/', publicRouter);
+app.use('/show_members', show_membersRouter);
+app.use('/public', publicRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

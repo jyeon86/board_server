@@ -24,7 +24,9 @@ router.get('/', function(req, res, next) {
     // 데이터베이스를 활용하기 위해 풀에서 연결을 가져옴
     pool.getConnection(function(err, connection) {
         // 데이터 베이스에서 실행시킬 sql문(query)을 작성
-        var query = connection.query('select * from my_board WHERE "일반" ', function(err, rows) {
+        var sql= "SELECT * FROM my_board WHERE category = '일반';";
+
+        var query = connection.query('select * from my_board WHERE category = "일반"; ', function(err, rows) {
             if(err) {// sql문 작성시 에러가 발생할 경우
                 connection.release();
                 throw err;

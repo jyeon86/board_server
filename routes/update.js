@@ -39,7 +39,7 @@ router.get('/:idx', function(req, res, next) {
       });
   });
 });
-
+//미들웨어
 router.post('/',function(req,res,next){
     var idx = req.body.indexInput;
     console.dir(req.body);
@@ -67,7 +67,7 @@ router.post('/',function(req,res,next){
         + ' WHERE _idx =' + idx;
         console.log(idx);
         console.log(sql);
-        
+
         var query = connection.query(sql, function(err, rows) {
             if(err) {
                 console.log("query Error");

@@ -50,16 +50,21 @@
             <form method="post" action="/read">
               <input type="hidden" id="idx" name="idx" value="<%= rows[0]._idx %>">
               <input type="submit" class="btn btn-primary" value="추천하기">
+              <input type="button" value="목록으로" class="btn btn-outline-primary" style="" onclick="window.location.href='http://localhost:3000/'">
               
             <!--사이트 주소에 글 번호 데이터(_idx)를 포함해서 전달하는 get 방식 예시-->
               <input type="button"  style="float:right;" class="btn btn-outline-success" value="수정하기" onclick="window.location.href='http://localhost:3000/update/<%= rows[0]._idx %>'">
-              <input type="button"  style="float:right;" class="btn btn-outline-danger" value="삭제하기" onclick="window.location.href='http://localhost:3000/delete/<%= rows[0]._idx %>'">
+              <input type="button"  style="float:right;" id="del" class="btn btn-outline-danger" value="삭제하기" onclick="window.location.href='http://localhost:3000/delete/<%= rows[0]._idx %>'">
 
           </div></form> 
         </td>  
 </tr>
         </td>
-
-
+<script>
+$("#del").click(function(){
+  alert('삭제되었습니다');
+  console.log('삭제되었습니다')
+});</script>
+<script src="../public/javascripts/del.js"></script>
   </body>
 </html>

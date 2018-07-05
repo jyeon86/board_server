@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+#box{
+    width: 450px;
+    height: 500px;
+    border-style: solid;
+    margin-left: calc(50%-100px);
+    margin-top: 50px;
+    }
+
+#inner_box{
+    margin: 50px 40px 50px 40px;
+    width: 370px;
+    height: 400;
+}
+
+#login_sentence{
+    margin-top: 16px;
+    margin-bottom: 0px;
+    font-size: 25px;
+}
+
+.input_id{
+    margin: 40px 0 0 0;
+    width: 370px;
+    height: 24px;
+    font-size: 15px;
+    border-style: none;
+    border-bottom-style: solid;
+    border-color: gainsboro;
+    border-bottom-width: 1px;
+}
+a{
+    text-decoration: none;
+    color: dodgerblue;
+}
+#account_id{
+    margin: 20px 0 0 0;
+    font-size: 15px;
+}
+#login_button_id{
+    border-style: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 2px;
+    margin: 0 0 0 220px;
+}

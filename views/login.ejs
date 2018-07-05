@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="../public/stylesheets/index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<!--요기서부터 로긴창 만들기 시작-->
+<body>
+    <div id="box">
+        <div id="inner_box">
+           <form method="post" action="/login">
+                <img src="https://www.google.co.kr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
+                " width="80" height="30" alt="" srcset="">
+                <!--로그인문자-->
+                <p id="login_sentence"> 로그인</p>
+                <input type="text" class="input_id" placeholder="아이디" name="id" id="">
+                <input type="password" class="input_id" placeholder="비밀번호"  name="password">
+                <p><font size="2">
+                        내 컴퓨터가아닌가요?
+                </font></p>
+
+                <input type="submit" name="login" value="로그인" class="btn btn-primary" id="login_button_id">
+            </form>
+        </div>
+    </div>
+
+
+    </div>
+
+</body>
+</html>

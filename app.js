@@ -3,7 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+//npm install express-session --save
+var session = require('express-session');
+//end of session part
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var readRouter = require('./routes/read');
@@ -14,6 +16,7 @@ var show_membersRouter = require('./routes/show_members');
 var publicRouter = require('./routes/public');
 var joinRouter = require('./routes/join');
 var deleteRouter = require('./routes/delete');
+var loginRouter = require('./routes/login');
 
 
 var app = express();
@@ -27,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret : 'my key', resave : true, saveUninitialized :true}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -38,6 +42,7 @@ app.use('/show_members', show_membersRouter);
 app.use('/public', publicRouter);
 app.use('/join', joinRouter);
 app.use('/delete', deleteRouter);
+app.use('/login', loginRouter);
 //app.use('/join', joinRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,7 +12,7 @@ var updateRouter = require('./routes/update');
 var searchRouter = require('./routes/search');
 var show_membersRouter = require('./routes/show_members');
 var publicRouter = require('./routes/public');
-//var joinRouter = require('./routes/join');
+var joinRouter = require('./routes/join');
 var deleteRouter = require('./routes/delete');
 
 
@@ -36,6 +36,7 @@ app.use('/update', updateRouter);
 app.use('/search', searchRouter);
 app.use('/show_members', show_membersRouter);
 app.use('/public', publicRouter);
+app.use('/join', joinRouter);
 app.use('/delete', deleteRouter);
 //app.use('/join', joinRouter);
 // catch 404 and forward to error handler

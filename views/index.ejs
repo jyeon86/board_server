@@ -2,16 +2,36 @@
 <html>
   <head>
     <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="../public/stylesheets/index.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link rel='stylesheet' href='/stylesheets/style.css' />
 
   </head>
   <body>
+
+  <div align="right">
+<!--     
+    <%
+    /*if(is_logined){*/  
+    %>
+    <span><% /*login_id */%>님 반갑습니다.</span>
+    <input type="button" value="로그아웃" onclick="window.location.herf='http://localhost:3000/session/logout'">
+     
+ -->
+    <%
+    /*}else {*/ 
+    %>
+    <input type="button" class="btn btn-primary" value="로그인" onclick="window.location.href='http://localhost:3000/session/login'">
+    <input type="button" class="btn btn-primary" value="회원가입" onclick="window.location.href='http://localhost:3000/join'">
+    <% 
+    /* }*/
+    %>
+  </div>
+
       <h3>INDEX PAGE</h3>   
       <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -28,17 +48,17 @@
 
 
 
-      <table class="table-bordered table-hover" border='1'>
+      <table class="table-bordered table-hover">
         <tr>
-          <th class="table-primary text-center">글번호</td>
-          <th class="table-primary text-center">제목</td>
-          <th class="table-primary text-center">이름</td>
-          <th class="table-primary text-center">조회수</td>
-          <th class="table-primary text-center">추천수</td>
-          <th class="table-primary text-center">카테고리</td> 
-          <th class="table-primary text-center">내용</td>
-          <th class="table-primary text-center">업데이트 시간</td>
-          <th class="table-primary text-center">글쓴시간</td>
+          <th class="table-primary text-center " id="w1">글번호</td>
+          <th class="table-primary text-center " id="w2">제목</td>
+          <th class="table-primary text-center " id="w3">이름</td>
+          <th class="table-primary text-center " id="w4">조회수</td>
+          <th class="table-primary text-center " id="w5">추천수</td>
+          <th class="table-primary text-center " id="w">카테고리</td> 
+          <th class="table-primary text-center " id="w6">내용</td>
+          <th class="table-primary text-center " id="w7">업데이트 시간</td>
+          <th class="table-primary text-center " id="w8">글쓴시간</td>
         </tr>
           
           <%
@@ -79,7 +99,7 @@
         </select>
     <input type="text"  id="keywordInput" name="keywordInput" class="form-control col-4" placeholder="검색내용을 입력하세요"> 
     <input type="submit" class="btn btn-outline-primary" value="검색하기">
-</form>    <input type="button" value="글쓰기" class="btn btn-primary" style="" onclick="window.location.href='http://localhost:3000/write'">
+</form>    <input type="button" value="글쓰기" class="btn btn-primary" style="" onclick="window.location.href='http://118.46.60.162:3000/write'">
 
 </body>
 </html>

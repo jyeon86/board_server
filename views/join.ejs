@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/join.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/stylesheets/join.css">
+    
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -18,27 +19,25 @@
 <body>
     <div class="container">
         <h2>회원가입</h2>
-        <form action="https://www.naver.com" method="" id="formTag">
+        <form action="/join" method="POST" id="formTag">
             <div class="form-group">
                 <label for="usr">아이디</label>
                 <input type="text" class="form-control" id="usr" name="username"
                 onchange="checkValidId(this.value)">
             </div>
             <div class="information" id="inforId">
-                아이디는 5~10글자이고, 아이디 첫글자는 영문자이어야 합니다.
+                아이디는 1~10글자이고, 아이디 첫글자는 영문자이어야 합니다.
             </div>
             <div class="form-group">
                 <label for="pwd">비밀번호</label>
-                <input type="password" class="form-control" id="pwd" name="password"
-                onchange="checkValidPw(this.value)">
+                <input type="password" class="form-control" id="pwd" name="password" onchange="checkValidPwd(this.value)">
             </div>
             <div class="information" id="inforPwd">
-                비밀번호는 8~20글자이고, 영문자와 숫자가 1개이상씩 들어가야합니다.
+                비밀번호는 1~20글자이고, 영문자와 숫자가 1개이상씩 들어가야합니다.
             </div>
             <div class="form-group">
                 <label for="pwdConfirm">비밀번호 확인</label>
-                <input type="password" class="form-control" id="pwdConfirm" name="passwordConfirm"
-                onchange="checkValidPwdConfirm(this.value)">
+                <input type="password" class="form-control" id="pwdConfirm" name="passwordConfirm" onchange="checkValidPwdcfm(this.value)">
             </div>
             <div class="information" id="inforPwdConfirm">
                 비밀번호와 비밀번호 확인이 일치하지 않습니다.
@@ -51,8 +50,8 @@
             </div>
             <div>
                 <input type="text" class="form-control year" id="year" name="year" 
-                placeholder="년도" onchange="checkValidBirth()">
-                <select class="form-control month" id="month">
+                placeholder="년도"  onchange="checkValidBirth(this.value)">
+                <select class="form-control month" id="month" name="month" onchange="checkValidBirth(this.value)">
                     <option>월</option>
                     <option>1</option>
                     <option>2</option>
@@ -67,8 +66,7 @@
                     <option>11</option>
                     <option>12</option>
                 </select>
-                <input type="text" class="form-control day" id="day" name="day" 
-                placeholder="일" onchange="checkValidBirth()">
+                <input type="text" class="form-control day" id="day" name="day" placeholder="일" onchange="checkValidBirth(this.value)">
             </div>
             <div class="information" id="inforBirth">
             </div>
@@ -77,8 +75,8 @@
                 <select class="form-control country-code" id="countryCode" disabled>
                         <option>+82</option>
                 </select>
-                <input type="text" class="form-control number" id="number" name="number" 
-                placeholder="휴대전화번호" onchange="">
+                <input type="text" class="form-control number" id="phone_number" name="phone_number" 
+                placeholder="휴대전화번호" onchange="checkValidNumber(this.value)">
                 <input type="button" class="form-control certification" value="인증"/>
             </div>
             <div class="information" id="inforNumber">
@@ -88,7 +86,7 @@
         </form>
     </div>
     
-    <script src="../public/javascripts/join.js" type="text/javascript">
+    <script src="/javascripts/join.js" type="text/javascript">
     </script>
 </body>
 </html>

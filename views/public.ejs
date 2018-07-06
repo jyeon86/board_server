@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../public/stylesheets/index.css">
+<link rel="stylesheet" href="/stylesheets/index.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -13,6 +13,25 @@
 <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+      <div align="right">
+  
+      <%
+      if(is_logined){ 
+      %>
+      <span><%= login_id  %>님 반갑습니다.</span>
+      <input type="button" class="btn btn-outline-danger" value="로그아웃" onclick="window.location.href='http://localhost:3000/logout'">
+        
+  
+      <%
+      }else {
+      %>
+      <input type="button" class="btn" value="로그인" onclick="window.location.href='http://localhost:3000/login'">
+      <input type="button" class="btn" value="회원가입" onclick="window.location.href='http://localhost:3000/join'">
+      <% 
+        }
+      %>
+    </div>
+      
       <h3>Public Board PAGE</h3>   
       <ul class="nav nav-tabs">
           <li class="nav-item">

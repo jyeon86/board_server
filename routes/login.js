@@ -47,7 +47,6 @@ router.post('/', function(req, res, next){
                     throw err;
                 }
                 console.dir(rows);
-
                 if(rows.length == 0){//입력한 자료와 일치하는 자료가 없을 경우
                     res.redirect("http://localhost:3000/login")
                 }else if(rows.length == 1){
@@ -55,14 +54,19 @@ router.post('/', function(req, res, next){
                     //로그인한 정보를 세션 객체 저장한다.
                     //로그인이 되어있으면 (req.session.user)에 아이디 정보가 있고,
                     //로그인이 되어있지 않으면 세션 객체에 아이디 정보가 없다.
-                    req.session.user = {id : id};
+                    req.session.user = {user_id : id};
                     res.redirect('http://localhost:3000');
                 }else{//사용자에게 에러처리를 해야합니다.
                 }
                 connection.release();
             });
         });
+    
+    }
+    else {
+        res.redirect("http://localhost:3000/login");
     }
 });
 
 module.exports = router;
+

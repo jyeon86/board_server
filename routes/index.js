@@ -24,18 +24,47 @@ router.get('/', function(req, res, next) {
     // 데이터베이스를 활용하기 위해 풀에서 연결을 가져옴
     pool.getConnection(function(err, connection) {
         // 데이터 베이스에서 실행시킬 sql문(query)을 작성
-        var query = connection.query('select * from my_board', function(err, rows) {
-            if(err) {// sql문 작성시 에러가 발생할 경우
-                connection.release();
-                throw err;
-            }
-            //index.ejs를 클라이언트 화면에 표시할때 데이터베이스 검색 결과인 rows도 같이 전달한다.
-            res.render('index', { rows : rows });
+        var query = connection.query('select * from my_board', function(err, rows){ 
+
+        if(err) {// sql문 작성시 에러가 발생할 경우
             connection.release();
-            
+            throw err;
+        }
+        //세션에 사용자 정보가 있는지 없는지에 따라 로그인 여부를 판단한다.
+        if(req.session.user){
+            //사용자 정보가 있는 경우
+            //사용자가 로그인되어있는상태이고,index.ejs를 불러오는데
+            //사용자 아이디(req.session.user.user_id)를 전달한다
+            res.render('index', { rows : rows, is_logined : true, login_id : req.session.user.user_id });
+        }else{
+            //사용자 정보가 있는 경우
+            //사용자가 로그인되어 있지 않은 상태이고, index.ejs를 표시하는데 로그인이 되어있지
+            //않으므로, 사용자 아이디는 빈칸으로 보낸다.
+            res.render('index', { rows : rows, is_logined : false, login_id : ""});
+        }
+        //index.ejs를 클라이언트 화면에 표시할때 데이터베이스 검색 결과인 rows도 같이 전달한다.
+        connection.release();
+        
         });
     });
   
+});
+//로그아웃을 할 때 실행되는 미들웨어
+//localhost:3000/session/logout
+router.get('/logout', function(req, res, next) {
+    //세션에 데이터객체가 존재함
+    if(req.session.user){
+        console.log("로그아웃한다");
+        // 세션을제거(로그인한사용자정보를삭제)
+        req.session.destroy(function(err){
+            if(err) {throw err;}
+            console.log('세션을 삭제하고 로그아웃 되었음');
+        });
+    } else {
+        console.log('로그인이 되어있지 않음');
+    }
+    //게시판의 메인화면으로 이동
+    res.redirect('http://localhost:3000');
 });
 
 module.exports = router;

@@ -59,13 +59,33 @@ router.post('/', function(req, res, next) {
     pool.getConnection(function(err, connection) {
         // 데이터 베이스에서 실행시킬 sql문(query)을 작성
         var query = connection.query('select * from my_board where _idx = '+ idx, function(err, rows) {
+             
             if(err) {// sql문 작성시 에러가 발생할 경우
                 connection.release();
                 throw err;
             }
+                if(rows[0].category == "회원"){
+                    if(!req.session.user){
+                        res.redirect('http://localhost:3000/login');
+                        connection.release();
+                        return;
+                }
+            }
+
+            var update_sql = "UPDATE my_board SET hit_count=hit_count+1 WHERE _idx=" +idx;
+            connection.query(update_sql, function(err, rows2){
+                if(err){
+                    connection.release();
+                    throw err;
+                }
+                res.render('read', { rows : rows});
+                connection.release();
+            });
+            
+            
+            
             //index.ejs를 클라이언트 화면에 표시할때 데이터베이스 검색 결과인 rows도 같이 전달한다.
             res.render('read', { rows : rows });
-            connection.release();
             
         });
     });

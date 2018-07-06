@@ -4,7 +4,7 @@
     <title></title>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../public/stylesheets/index.css">
+<link rel="stylesheet" href="/stylesheets/index.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -14,36 +14,35 @@
   <body>
 
   <div align="right">
-<!--     
-    <%
-    /*if(is_logined){*/  
-    %>
-    <span><% /*login_id */%>님 반갑습니다.</span>
-    <input type="button" value="로그아웃" onclick="window.location.herf='http://localhost:3000/session/logout'">
      
- -->
     <%
-    /*}else {*/ 
+    if(is_logined){ 
+    %>
+    <span><%= login_id  %>님 반갑습니다.</span>
+    <input type="button" class="btn btn-outline-danger" value="로그아웃" onclick="window.location.href='http://localhost:3000/logout'">
+     
+
+    <%
+    }else {
     %>
     <input type="button" class="btn btn-primary" value="로그인" onclick="window.location.href='http://localhost:3000/login'">
     <input type="button" class="btn btn-primary" value="회원가입" onclick="window.location.href='http://localhost:3000/join'">
     <% 
-    /* }*/
+     }
     %>
   </div>
-
+  
       <h3>INDEX PAGE</h3>   
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="http://localhost:3000/">전체글</a>
+          <a class="nav-link active btn" href="http://localhost:3000/">전체글</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost:3000/show_members">회원글만 보기</a>
+          <a class="nav-link active btn" href="http://localhost:3000/show_members">회원글만 보기</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="http://localhost:3000/public">일반글만 보기</a>
+        <li class="nav-item ">
+          <a class="nav-link active btn" href="http://localhost:3000/public">일반글만 보기</a>
         </li>
-        <li class="nav-item">
       </ul>
 
 
@@ -55,10 +54,10 @@
           <th class="table-primary text-center " id="w3">이름</td>
           <th class="table-primary text-center " id="w4">조회수</td>
           <th class="table-primary text-center " id="w5">추천수</td>
-          <th class="table-primary text-center " id="w">카테고리</td> 
-          <th class="table-primary text-center " id="w6">내용</td>
-          <th class="table-primary text-center " id="w7">업데이트 시간</td>
-          <th class="table-primary text-center " id="w8">글쓴시간</td>
+          <th class="table-primary text-center " id="w6">카테고리</td> 
+          <th class="table-primary text-center " id="w7">내용</td>
+          <th class="table-primary text-center " id="w8">업데이트 시간</td>
+          <th class="table-primary text-center " id="w9">글쓴시간</td>
         </tr>
           
           <%

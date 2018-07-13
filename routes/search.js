@@ -59,10 +59,19 @@ router.post('/',function(req,res,next){
                     connection.release();
                     throw err;
                 }
-                console.dir(rows);
-                //데이터베이스에 검색한 결과물(rows)을 index.ejs에 전송한다.
-                //index.ejs가 클라이언트에 출력됨
-                res.render('index.ejs', {rows : rows }); //res라는 메소드?내에 render(대상파일, 데이터입력)
+
+                if(req.session.user){
+                    //사용자 정보가 있는 경우
+                    //사용자가 로그인되어있는상태이고,index.ejs를 불러오는데
+                    //사용자 아이디(req.session.user.user_id)를 전달한다
+                    res.render('index', { rows : rows, is_logined : true, login_id : req.session.user.user_id });
+                }else{
+                    //사용자 정보가 있는 경우
+                    //사용자가 로그인되어 있지 않은 상태이고, index.ejs를 표시하는데 로그인이 되어있지
+                    //않으므로, 사용자 아이디는 빈칸으로 보낸다.
+                    res.render('index', { rows : rows, is_logined : false, login_id : ""});
+                }
+                //index.ejs를 클라이언트 화면에 표시할때 데이터베이스 검색 결과인 rows도 같이 전달한다.
                 connection.release();
             });
     });

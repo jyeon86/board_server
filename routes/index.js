@@ -20,6 +20,55 @@ var pool = mysql.createPool({
 // 이때 전달할 데이터를 담은 객체도 같이 보낸다,
 // title >> 키
 // 'Express' >> 값
+router.get('/', function(req, res, next){//pagenation
+        res.redirect("http://localhost:3000/page/1")
+        connection.release();  
+});
+router.get('/page/:number_of_page', function(req, res, next){//pagenation
+    var number_of_page = req.params.number_of_page;
+    pool.getConnection(function(err, connection){
+        var sql_count = "SELECT count(*) AS count FROM my_board;";
+        //var sql_count = "SELECT * FROM my_board WHERE enable=1;"; 이렇게써도됨
+        var sql = "SELECT * FROM my_board ORDER BY create_at DESC LIMIT 3 OFFSET " + ((number_of_page-1)*3);
+        //특정 페이지번호에 보여질 데이터들만 추려서 검색하는 sql
+        
+        /*sql에서 limit [숫자] : 숫자의 갯수만큼 검색(검색갯수의결과를 지정)
+        OFFSET 은 검색된 데이터의 순서(0부터 시작)
+        맨 처음 검색데이터는 OFFSET 이 0번이다. 두번째 검색 데이터페이지는 OFFSET이 3번이다.
+        */
+
+        console.log(sql_count);
+        console.log(sql);
+        connection.query(sql_count, function(err, rows){
+            if(err) {// sql문 작성시 에러가 발생할 경우
+                connection.release();
+                throw err;
+            }
+            total_write = rows[0].count;//총데이터의갯수를 임시저장변수에 저장,
+            // = rows.length;
+            console.log(total_write);
+
+            connection.query(sql, function(err, rows){
+            if(err) {// sql문 작성시 에러가 발생할 경우
+                connection.release();
+                throw err;
+            }
+            if(req.session.user)    {
+                res.render('index',
+                { rows : rows, is_logined : true, login_id : req.session.user.user_id, type : "total", search_keyword : "", total_write : total_write});
+            //type가 total이면 일반, 회원글 모두를 대상으로 검색한 결과
+            //검색결과에 대해 페이지네이션을 적용할 때 검색어를 search_keyword에 저장
+            }else{
+                res.render('index', 
+            { rows : rows, is_logined : false, login_id : "", type : "total", search_keyword : "", total_write : total_write});
+                }
+            });
+        connection.release();        
+        });
+    });
+});
+
+
 router.get('/', function(req, res, next) {
     // 데이터베이스를 활용하기 위해 풀에서 연결을 가져옴
     pool.getConnection(function(err, connection) {
@@ -64,7 +113,7 @@ router.get('/logout', function(req, res, next) {
         console.log('로그인이 되어있지 않음');
     }
     //게시판의 메인화면으로 이동
-    res.redirect('http://localhost:3000');
+    res.redirect('http://localhost:3000/page/1');
 });
 
 module.exports = router;

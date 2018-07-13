@@ -38,10 +38,10 @@
           <a class="nav-link active btn" href="http://localhost:3000/">전체글</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active btn" href="http://localhost:3000/show_members">회원글만 보기</a>
+          <a class="nav-link btn" href="http://localhost:3000/show_members">회원글만 보기</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link active btn" href="http://localhost:3000/public">일반글만 보기</a>
+          <a class="nav-link btn" href="http://localhost:3000/public">일반글만 보기</a>
         </li>
       </ul>
 
@@ -68,11 +68,11 @@
             <%
               if(rows[i].noti == 1) {
             %>
-            <td><a href="./read/<%= rows[i]._idx %>"><b>[공지] </b><%= rows[i].title %></a></td>
+            <td><a href="http://118.46.60.162:3000/read/<%= rows[i]._idx %>"><b>[공지] </b><%= rows[i].title %></a></td>
             <%
               } else {
             %>
-              <td><a href="./read/<%= rows[i]._idx %>"><%= rows[i].title %></a></td>
+              <td><a href="http://118.46.60.162:3000/read/<%= rows[i]._idx %>"><%= rows[i].title %></a></td>
             <%
               }
             %>
@@ -89,7 +89,27 @@
           }
           %>
 
-      </table>
+     </table>
+<div>
+<!--페이지네이션시작-->
+  <%
+  var times = 0;
+  if(total_write%3 == 0){
+    times = (total_write/3);
+  }else{
+    times = (total_write/3) + 1;
+  }
+
+   for(var i = 1; i <= (total_write/3)+1; i++){
+     if(type == "total") {
+  %>
+      <span><a href="/page/<%= i %>"><%= i %></a></span>
+  <%
+    } else{}
+  } 
+  %>
+</div>
+<!--페이지네이션끝-->
   <form method="post" action="/search" class="form-inline"  float="left">
     <select type="text" id="searchTypeInput" name="searchTypeInput" class="btn btn-outline-primary" name="categoryInput" id="categoryInput">
           <option value="title" selected="selected">제목</option>

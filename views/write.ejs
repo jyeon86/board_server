@@ -45,7 +45,7 @@
   </head>
   <body>
     <h1>글쓰기</h1>
-    <form method="post" action="/write" onsubmit="return onWriteSubmit()">
+    <form method="post" action="/write" enctype="multipart/form-data" onsubmit="return onWriteSubmit()">
         <table class="table table-bordered table-hover" border="1" width="100%">
             <tr>
                 <td class="table-primary text-center" style="font-size: 17px;">제목</td>
@@ -79,7 +79,11 @@
                 <td class="table-primary text-center" style="font-size: 19px; height:100px;">내용</td>
                 <td><textarea class="form-control" style="height:200px;" name="contentsInput" id="contentsInput" cols="40" rows="5" placeholder="내용을 입력해주세요."></textarea></td>
             </tr>
-         </table>      
+
+            <!--파일 업로드 부분-->
+            <tr><td colspan="2"><input type="file" name="myFile" class="form-control btn btn-outline-primary" id=""></td></tr>
+         </table> 
+         <!--     
             <div class="btn-group">    
                 <div class="form-check-inline">
                     <label class="form-check-label">
@@ -92,7 +96,7 @@
                     </label>
                     </div>
             </div> 
-
+        -->
                 <input type="submit" style="float:right;" class="btn btn-outline-primary" value="글 등록하기">
 
     </form>

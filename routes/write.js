@@ -3,6 +3,21 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db_info = require('./db_info');
+//업로드 관련 코드 시작.
+var multer = require('multer');//  multer(업로드 모듈)를 로드
+// 저장할 파일의 위치, 파일 이름 등을 설정하는 부분
+var storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, '../public/uploads/') //cb 콜백 함수를 통해 전송된 파일 저장 디렉토리 설정
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)//cb 콜백 함수를 통해 전송된 파일 이름 설정
+  }
+});
+// upload객체를 만들어서 실제로 파일 업로드 기능을 수행
+var upload = multer({ storage: storage });
+
+//업로드 관련 코드 끝.
 
 var pool = mysql.createPool({
     host : db_info.getHost(),
@@ -24,7 +39,7 @@ router.get('/', function(req, res, next) {
   res.render('write', { title: 'Express' });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', upload.single("myFile"), function(req, res, next) {
   //클라이언트로부터 받은 데이터들
   var title = req.body.titleInput;
   var name = req.body.nameInput;
